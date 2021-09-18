@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/fredbainbridge/pokermavensclient/ringgame"
+	"github.com/fredbainbridge/pokermavensclient/tournament"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
-var ringGameCmd = &cobra.Command{
-	Use:   "ringgame",
-	Short: "Ring game tables",
+var tournamentCmd = &cobra.Command{
+	Use:   "tournament",
+	Short: "Ring game operations",
 	Long:  "This command performs various ring game operations on the Poker Mavens server software.",
 	Run: func(cmd *cobra.Command, args []string) {
-		x, err := ringgame.Tables(viper.GetString("Url"), viper.GetString("Password"))
+		x, err := tournament.Tables(viper.GetString("Url"), viper.GetString("Password"))
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -25,5 +25,5 @@ var ringGameCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(ringGameCmd)
+	rootCmd.AddCommand(tournamentCmd)
 }
