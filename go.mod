@@ -3,7 +3,7 @@ module github.com/fredbainbridge/pokercli
 go 1.17
 
 require (
-	github.com/fredbainbridge/pokermavensclient v1.0.0
+	github.com/fredbainbridge/pokermavensclient v1.2.1
 	github.com/spf13/cobra v1.2.1
 	github.com/spf13/viper v1.8.1
 )

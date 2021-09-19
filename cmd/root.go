@@ -31,8 +31,6 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cobra.yaml)")
-	rootCmd.PersistentFlags().StringP("author", "a", "YOUR NAME", "author name for copyright attribution")
-	rootCmd.PersistentFlags().StringVarP(&userLicense, "license", "l", "", "name of license for the project")
 	rootCmd.PersistentFlags().Bool("viper", true, "use Viper for configuration")
 	viper.GetViper().SetConfigName("config")
 	viper.AddConfigPath(".")
@@ -40,18 +38,11 @@ func init() {
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file, %s", err)
 	}
-	log.Printf("api uri is %s", viper.GetString("Url"))
-	if len(viper.GetString("Password")) != 0 {
-		log.Print("Password is set")
-	}
 
 	viper.BindPFlag("author", rootCmd.PersistentFlags().Lookup("author"))
 	viper.BindPFlag("useViper", rootCmd.PersistentFlags().Lookup("viper"))
 	viper.SetDefault("author", "NAME HERE <EMAIL ADDRESS>")
 	viper.SetDefault("license", "apache")
-
-	//RootCmd.AddCommand(ringgame.RingGameCmd)
-	//RootCmd.AddCommand(ringgame.RingGameTableCmd)
 }
 
 func initConfig() {
